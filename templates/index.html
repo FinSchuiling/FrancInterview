@@ -1,0 +1,34 @@
+ {% block content %}
+<html>
+    <body>
+        <h1>Hello!
+        {% if username %}
+            {{ username }}
+        {% endif %}
+        </h1>
+
+        {% if not username %}
+            <p>to view a users timeline go to /?username=<b>username</b></p>
+            <p><a href="/?username=Kyle">example</a></p>
+            <p>Posts can be found <a href="/posts">here</a></p>
+            <p>Users and there follows can be found <a href="/users">here</a></p>
+        {% else %}
+            <p>Your timeline:</p>
+            <hr/>
+            <ul>
+            {% for post in string %}
+                <li>
+                <div>
+                <h2>{{ post.user }}</h2>
+                <h3>{{post.status }}</h3>
+                <p>{{ post.time }}</p>
+                </div>
+                </li>
+                <hr/>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    </body>
+</html>
+
+{% endblock %}
